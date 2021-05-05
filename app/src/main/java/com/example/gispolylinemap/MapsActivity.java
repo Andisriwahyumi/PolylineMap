@@ -39,6 +39,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -46,12 +47,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Add a marker in Home and move the camera
         LatLng home = new LatLng(-0.815740, 119.887429);
         LatLng mouza = new LatLng(-0.849129, 119.882459);
+        LatLng alfamidi_1 = new LatLng(-0.840332, 119.883411);
+        LatLng alfamidi_2 = new LatLng(-0.844960, 119.882769);
 
         //Custome size marker
         int tinggi = 100;
         int lebar = 50;
-        BitmapDrawable bitmapStart = (BitmapDrawable)getResources().getDrawable(R.drawable.pin_map_biru);
-        BitmapDrawable bitmapDes = (BitmapDrawable)getResources().getDrawable(R.drawable.pin_map_merah);
+        BitmapDrawable bitmapStart = (BitmapDrawable)getResources().getDrawable(R.drawable.pin_map_home);
+        BitmapDrawable bitmapDes = (BitmapDrawable)getResources().getDrawable(R.drawable.pin_map_supermarket);
         Bitmap s = bitmapStart.getBitmap();
         Bitmap d = bitmapDes.getBitmap();
         Bitmap markerStart = Bitmap.createScaledBitmap(s, lebar, tinggi, false);
@@ -61,9 +64,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker (new MarkerOptions().position(home).title("Marker in My Home")
          .snippet("Ini adalah Tempat Tinggal saya!")
          .icon(BitmapDescriptorFactory.fromBitmap(markerStart)));
+
          mMap.addMarker (new MarkerOptions().position(mouza).title("Marker in Mouza Supermarket")
          .snippet("Ini adalah Mouza Supermarket!")
          .icon(BitmapDescriptorFactory.fromBitmap(markerDes)));
+
+        mMap.addMarker (new MarkerOptions().position(alfamidi_1).title("Marker in Alfamidi 1")
+                .snippet("Ini adalah Alfamidi RE Martadinata 2!")
+                .icon(BitmapDescriptorFactory.fromBitmap(markerDes)));
+
+        mMap.addMarker (new MarkerOptions().position(alfamidi_2).title("Marker in Alfamidi 2")
+                .snippet("Ini adalah Alfamidi Martadinata Tondo!")
+                .icon(BitmapDescriptorFactory.fromBitmap(markerDes)));
 
          mMap.addPolyline(new PolylineOptions().add(
                  home,
